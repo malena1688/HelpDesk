@@ -11,24 +11,22 @@ class TicketTecnico:
         self._estado = "Abierto"
         self._prioridad = prioridad
 
-   
-def cambiar_estado(self, nuevo_estado):
-    transiciones = {
-        "Abierto": ["En Proceso"],
-        "En Proceso": ["Abierto", "Cerrado"],
-        "Cerrado": []
-    }
+    def cambiar_estado(self, nuevo_estado):
+        transiciones = {
+            "Abierto": ["En Proceso"],
+            "En Proceso": ["Abierto", "Cerrado"],
+            "Cerrado": []
+        }
 
-    if nuevo_estado not in transiciones:
-        raise EstadoInvalidoError("Estado no válido")
+        if nuevo_estado not in transiciones:
+            raise EstadoInvalidoError("Estado no válido")
 
-    if nuevo_estado not in transiciones[self._estado]:
-        raise EstadoInvalidoError(
-            f"No se puede pasar de {self._estado} a {nuevo_estado}"
-        )
+        if nuevo_estado not in transiciones[self._estado]:
+            raise EstadoInvalidoError(
+                f"No se puede pasar de {self._estado} a {nuevo_estado}"
+            )
 
-    self._estado = nuevo_estado
-
+        self._estado = nuevo_estado
 
     def calcular_sla(self):
         return 48
@@ -61,6 +59,7 @@ class TicketSoftware(TicketTecnico):
         }
         return sla.get(self._prioridad, 36)
 
+
 if __name__ == "__main__":
 
     ticket1 = TicketHardware(
@@ -78,6 +77,9 @@ if __name__ == "__main__":
     print("SLA Software:", ticket2.calcular_sla(), "horas")
 
     try:
+        ticket1.cambiar_estado("En Proceso")
+        print("Estado:", ticket1._estado)
+
         ticket1.cambiar_estado("Cerrado")
         print("Estado:", ticket1._estado)
 
