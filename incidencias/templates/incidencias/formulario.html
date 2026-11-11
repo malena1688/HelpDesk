@@ -1,0 +1,23 @@
+{% extends 'incidencias/base.html' %}
+
+{% block contenido %}
+
+<h1>Nueva incidencia</h1>
+
+<form method="post" class="bg-white p-4 rounded shadow-sm">
+
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-success">
+        Guardar incidencia
+    </button>
+
+    <a href="{% url 'lista_incidencias' %}" class="btn btn-secondary">
+        Cancelar
+    </a>
+
+</form>
+
+{% endblock %}

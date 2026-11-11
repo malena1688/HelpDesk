@@ -1,0 +1,39 @@
+{% extends 'incidencias/base.html' %}
+
+{% block contenido %}
+
+<h1>Listado de incidencias</h1>
+
+<a href="{% url 'crear_incidencia' %}" class="btn btn-primary mb-3">
+    Registrar incidencia
+</a>
+
+<table class="table table-bordered table-striped bg-white">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Estado</th>
+            <th>Prioridad</th>
+            <th>Técnico</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for incidencia in incidencias %}
+        <tr>
+            <td>{{ incidencia.titulo }}</td>
+            <td>{{ incidencia.estado }}</td>
+            <td>{{ incidencia.prioridad }}</td>
+            <td>{{ incidencia.tecnico|default:"Sin asignar" }}</td>
+            <td>{{ incidencia.fecha_creacion|date:"d/m/Y H:i" }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No hay incidencias registradas.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
