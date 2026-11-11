@@ -1,0 +1,17 @@
+
+PLAN DE PRUEBAS - HELPDESK
+
+PRUEBA 1: Transición de estados
+Comprobar que un ticket pasa de Abierto a En Proceso y posteriormente a Cerrado.
+Resultado esperado: transición correcta.
+Resultado obtenido: pendiente de registrar.
+
+PRUEBA 2: Validación del formulario
+Intentar enviar una incidencia sin completar los campos obligatorios.
+Resultado esperado: Django muestra errores y no guarda la incidencia.
+Resultado obtenido: pendiente de registrar.
+
+PRUEBA 3: Registro de incidencias
+Registrar una incidencia con título, descripción, prioridad y técnico asignado.
+Resultado esperado: la incidencia se guarda y aparece en el listado.
+Resultado obtenido: pendiente de registrar.
